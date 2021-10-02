@@ -1,0 +1,49 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int mostfreq(int arr[],int n)
+{
+    unordered_map<int,int>umap;
+    for(int i=0;i<n;i++)
+    {
+        umap[arr[i]]++;
+    }
+    int res=0;
+    int mostfrequent=0;
+    for(auto i: umap)
+    
+        if(mostfrequent<i.second)
+        {
+        res=i.first;
+        mostfrequent=i.second;
+        }
+    
+    return mostfrequent;
+}
+
+int maxsub(int arr[],int n)
+{
+    int res=arr[0];
+    for(int i=0;i<n;i++)
+    {
+        int count=0;
+        for(int j=i;j<n;j++)
+        {
+           count+=arr[j];
+           res=max(count,res);
+        }
+    }
+   return res;
+}
+
+int main() {
+    int n;
+    cin >>n;
+	int arr[]={1,2,3,4,5,5,5,6,6,7,7,7,7,7,7};
+	int result=mostfreq(arr,n);
+	int maxsum;
+	maxsum=maxsub(arr,n);
+	cout<<endl<<maxsum<<endl;
+	cout<<result;
+	return 0;
+}
